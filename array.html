@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Largest and Smallest </title>
+    <link rel="stylesheet" href="array.css">
+</head>
+<body>
+    <div class="container">
+        <p>Enter a list of numbers to find the largest and smallest:</p>
+        <input type="text" id="inputNumbers" placeholder="Enter numbers">
+        <button onclick="findLargestAndSmallest()">Find Largest and Smallest</button>
+        <p id="result"></p>
+    
+        <script>
+            function findLargestAndSmallest() {
+                const inputNumbers = document.getElementById("inputNumbers").value;
+                const resultElement = document.getElementById("result");
+    
+                // Split karega input string into an array of numbers
+                const numbers = inputNumbers.split(',').map(Number);
+    
+                if (numbers.length === 0 || isNaN(numbers[0])) {
+                    resultElement.textContent = "Please enter a valid list of numbers.";
+                    return;
+                }
+    
+                let smallest = numbers[0];
+                let largest = numbers[0];
+    
+                for (let i = 1; i < numbers.length; i++) {
+                    if (numbers[i] < smallest) {
+                        smallest = numbers[i];
+                    }
+                    if (numbers[i] > largest) {
+                        largest = numbers[i];
+                    }
+                }
+    
+                resultElement.textContent = `Smallest: ${smallest}, Largest: ${largest}`;
+            }
+        </script>
+    </div>
+    
+</body>
+</html>
